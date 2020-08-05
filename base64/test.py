@@ -22,7 +22,7 @@ if __name__ == "__main__":
     str2 = base64.b64encode(str1)
     print("encode {0}... to {1}...: ".format(str1[:4], str2[:4]), end="")
 
-    for _ in range(0, TRIES):
+    for _ in range(TRIES):
         str2 = base64.b64encode(str1)
         s += len(str2)
     print("{0}, {1}".format(s, time.time() - t))
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     print("decode {0}... to {1}...: ".format(str2[:4], str3[:4]), end="")
 
     t, s = time.time(), 0
-    for _ in range(0, TRIES):
+    for _ in range(TRIES):
         str3 = base64.b64decode(str2)
         s += len(str3)
     print("{0}, {1}".format(s, time.time() - t))
