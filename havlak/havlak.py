@@ -168,7 +168,7 @@ class SimpleLoop:
         self.children.append(loop)
 
     def dump(self, indent):
-        for i in range(indent):
+        for _ in range(indent):
             print("  ", end=" ")
 
         print(
@@ -244,9 +244,8 @@ class LSG:
 
     def calculateNestingLevel(self):
         for liter in self.loops:
-            if not liter.isRoot:
-                if liter.parent == None:
-                    liter.setParent(self.root)
+            if not liter.isRoot and liter.parent is None:
+                liter.setParent(self.root)
 
         self.calculateNestingLevelRec(self.root, 0)
 
@@ -637,8 +636,8 @@ if __name__=='__main__':
     for parlooptrees in range(10):
         cfg.createNode(n + 1)
         buildConnect(2, n + 1)
-        n = n + 1
-        for i in range(100):
+        n += 1
+        for _ in range(100):
             top = n
             n = buildStraight(n, 1)
             for j in range(25):
